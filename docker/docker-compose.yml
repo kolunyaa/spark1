@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+
+  minio:
+      container_name: minio
+      image: "minio/minio:latest"
+      environment:
+        MINIO_ACCESS_KEY: "Q3AM3UQ867SPQQA43P2F"
+        MINIO_SECRET_KEY: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+        MINIO_USERNAME: "root"
+        MINIO_GROUPNAME: "root"
+      ports:
+        - "9000:9000"
+      volumes:
+        - ~/minio/data:/data
+        - ~/minio/config:/root/.minio
+      command: "server /data"
