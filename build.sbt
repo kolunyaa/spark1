@@ -10,5 +10,5 @@ lazy val root = (project in file("."))
   .settings(
   name := "Spark1",
   libraryDependencies ++= additional ++ spark ++ testLibs,
-    mainClass in Compile := Some("com.zerniuk.Main")
+    mainClass in Compile := Some("com.zerniuk.SparkApp")
 )

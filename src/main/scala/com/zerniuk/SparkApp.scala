@@ -1,12 +1,14 @@
 package com.zerniuk
 
-import com.zerniuk.Minio._
-import com.zerniuk.TrainHandler._
+import com.zerniuk.dto.{AvgClassPrice, Renfe}
+import com.zerniuk.service.MinioService
+import com.zerniuk.service.MinioService._
+import com.zerniuk.service.TrainService._
 import org.apache.spark.sql.SparkSession
 
-object Main extends App {
+object SparkApp extends App {
 
-  val minio = new Minio
+  val minioService = new MinioService
 
   val spark = SparkSession
     .builder
@@ -25,7 +27,7 @@ object Main extends App {
 
   spark.conf.set("spark.sql.shuffle.partitions", "5")
 
-  minio.upload("data/renfe.csv", "renfe.csv")
+  minioService.upload("data/renfe.csv", "renfe.csv")
 
   spark.read
     .format(fileFormat)

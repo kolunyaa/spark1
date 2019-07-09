@@ -1,10 +1,12 @@
-package com.zerniuk
+package com.zerniuk.service
 
 import java.text.SimpleDateFormat
 
+import com.zerniuk.dto.{AvgClassPrice, Renfe}
+
 import scala.util.Try
 
-object TrainHandler {
+object TrainService {
 
   def validate(renfe: Renfe) = {
     and(
@@ -46,14 +48,6 @@ object TrainHandler {
   val outputPath = "s3a://bucket/result"
 
   val dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-
-
-  case class Renfe(id: String, insert_date: String,
-                   origin: String, destination: String, start_date: String,
-                   end_date: String, train_type: String, price: Option[Double],
-                   train_class: String, fare: String)
-
-  case class AvgClassPrice(train_class: String, train_type: String, average_price: Double)
 
   private val validTrainTypes = Seq(
     "AVE-LD",
