@@ -1,9 +1,9 @@
-package com.zerniuk
+package com.zerniuk.service
 
-import com.zerniuk.Minio._
+import com.zerniuk.service.MinioService._
 import io.minio.MinioClient
 
-class Minio {
+class MinioService {
 
   def upload(path: String, name: String) = {
     val minioClient = new MinioClient(url, accessKey, secretKey)
@@ -14,7 +14,7 @@ class Minio {
 
 }
 
-object Minio {
+object MinioService {
 
   val bucket = "bucket"
   val url = "http://127.0.0.1:9000"
